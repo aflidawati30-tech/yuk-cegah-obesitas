@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aflidaaa - Peduli Obesitas Anak</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            color: white;
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: block;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .info-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Statistics Section */
+        .stats-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tips Section */
+        .tips-container {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .tips-list {
+            list-style: none;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .tips-list li {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .tips-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .tips-list .tip-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* BMI Calculator */
+        .calculator {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .calculator button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .calculator button:hover {
+            opacity: 0.9;
+        }
+
+        #bmi-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .creator {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🧸</div>
+                Aflidaaa
+            </div>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#info">Informasi</a></li>
+                <li><a href="#tips">Tips</a></li>
+                <li><a href="#calculator">Kalkulator BMI</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Selamat Datang di Aflidaaa</h1>
+        <p>Platform Edukasi dan Pencegahan Obesitas pada Anak</p>
+        <p style="font-size: 1rem; opacity: 0.9;">Bersama Kita Wujudkan Generasi Sehat Indonesia</p>
+        <button class="cta-button" onclick="scrollToSection('about')">Pelajari Lebih Lanjut</button>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">Tentang Obesitas Anak</h2>
+        
+        <div class="stats-container">
+            <h3 style="text-align: center; margin-bottom: 2rem;">Fakta Obesitas Anak di Indonesia</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>18.8%</h3>
+                    <p>Anak usia 5-12 tahun mengalami kelebihan berat badan</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10.8%</h3>
+                    <p>Anak mengalami obesitas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2x Lipat</h3>
+                    <p>Peningkatan dalam 10 tahun terakhir</p>
+                </div>
+                <div class="stat-item">
+                    <h3>70%</h3>
+                    <p>Berisiko obesitas hingga dewasa</p>
+                </div>
+            </div>
+        </div>
+        
+        <p style="text-align: center; font-size: 1.1rem; margin-top: 2rem;">
+            Obesitas pada anak adalah kondisi medis serius yang mempengaruhi anak-anak dan remaja. 
+            Ini terjadi ketika anak memiliki berat badan yang jauh di atas normal untuk usia dan tinggi badannya.
+        </p>
+    </section>
+
+    <!-- Information Section -->
+    <section class="section" id="info">
+        <h2 class="section-title">Informasi Penting</h2>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">⚠️</div>
+                <h3>Penyebab Obesitas</h3>
+                <ul style="margin-left: 20px; color: #666;">
+                    <li>Pola makan tidak sehat</li>
+                    <li>Kurang aktivitas fisik</li>
+                    <li>Faktor genetik</li>
+                    <li>Kurang tidur</li>
+                    <li>Stres dan faktor psikologis</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-card-icon">🏥</div>
+                <h3>Dampak Kesehatan</h3>
+                <ul style="margin-left: 20px; color: #666;">
+                    <li>Diabetes tipe 2</li>
+                    <li>Tekanan darah tinggi</li>
+                    <li>Gangguan pernapasan</li>
+                    <li>Masalah persendian</li>
+                    <li>Gangguan psikologis</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-card-icon">📊</div>
+                <h3>Tanda-tanda Obesitas</h3>
+                <ul style="margin-left: 20px; color: #666;">
+                    <li>BMI di atas persentil 95</li>
+                    <li>Lingkar pinggang besar</li>
+                    <li>Mudah lelah</li>
+                    <li>Sesak napas saat aktivitas</li>
+                    <li>Lipatan kulit tebal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="section" id="tips">
+        <h2 class="section-title">Tips Pencegahan Obesitas</h2>
+        
+        <div class="tips-container">
+            <ul class="tips-list">
+                <li>
+                    <span class="tip-number">1</span>
+                    <div>
+                        <strong>Pola Makan Sehat</strong><br>
+                        Berikan makanan bergizi seimbang dengan porsi yang tepat. Perbanyak sayur, buah, dan protein tanpa lemak.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">2</span>
+                    <div>
+                        <strong>Aktivitas Fisik Rutin</strong><br>
+                        Ajak anak beraktivitas fisik minimal 60 menit setiap hari melalui bermain, olahraga, atau aktivitas menyenangkan lainnya.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">3</span>
+                    <div>
+                        <strong>Batasi Screen Time</strong><br>
+                        Kurangi waktu menonton TV, bermain gadget maksimal 2 jam per hari untuk anak di atas 2 tahun.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">4</span>
+                    <div>
+                        <strong>Tidur Cukup</strong><br>
+                        Pastikan anak tidur 9-12 jam per hari sesuai usia untuk menjaga metabolisme tubuh yang sehat.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">5</span>
+                    <div>
+                        <strong>Makan Bersama Keluarga</strong><br>
+                        Biasakan makan bersama keluarga untuk memantau pola makan anak dan membangun kebiasaan makan yang baik.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- BMI Calculator Section -->
+    <section class="section" id="calculator">
+        <h2 class="section-title">Kalkulator BMI Anak</h2>
+        
+        <div class="calculator">
+            <h3 style="text-align: center; margin-bottom: 1.5rem; color: #667eea;">Hitung Indeks Massa Tubuh Anak</h3>
+            
+            <label for="weight">Berat Badan (kg):</label>
+            <input type="number" id="weight" placeholder="Masukkan berat badan">
+            
+            <label for="height">Tinggi Badan (cm):</label>
+            <input type="number" id="height" placeholder="Masukkan tinggi badan">
+            
+            <label for="age">Usia (tahun):</label>
+            <input type="number" id="age" placeholder="Masukkan usia anak">
+            
+            <button onclick="calculateBMI()">Hitung BMI</button>
+            
+            <div id="bmi-result"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Aflidaaa - Peduli Obesitas Anak</h3>
+            <p style="margin: 1rem 0;">
+                Platform edukasi untuk mencegah dan mengatasi obesitas pada anak<br>
+                Hubungi kami: info@aflidaaa.com | Tel: (021) 1234-5678
+            </p>
+            
+            <div class="creator">
+                <p><strong>Dipersembahkan oleh:</strong></p>
+                <h4 style="margin-top: 0.5rem; color: #667eea;">Aflida</h4>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    Pencetus & Developer Platform Aflidaaa<br>
+                    &copy; 2024 Aflidaaa. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // BMI Calculator
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const age = parseFloat(document.getElementById('age').value);
+            
+            if (!weight || !height || !age) {
+                alert('Mohon lengkapi semua data!');
+                return;
+            }
+            
+            const heightInM = height / 100;
+            const bmi = weight / (heightInM * heightInM);
+            const bmiRounded = bmi.toFixed(1);
+            
+            let category = '';
+            let color = '';
+            let advice = '';
+            
+            // Simplified BMI categories for children
+            if (age >= 5 && age <= 18) {
+                if (bmi < 15) {
+                    category = 'Sangat Kurus';
+                    color = '#e74c3c';
+                    advice = 'Segera konsultasikan dengan dokter anak untuk evaluasi lebih lanjut.';
+                } else if (bmi < 18.5) {
+                    category = 'Kurus';
+                    color = '#f39c12';
+                    advice = 'Tingkatkan asupan nutrisi dengan makanan bergizi seimbang.';
+                } else if (bmi < 25) {
+                    category = 'Normal';
+                    color = '#27ae60';
+                    advice = 'Pertahankan pola hidup sehat dan tetap aktif!';
+                } else if (bmi < 30) {
+                    category = 'Kelebihan Berat Badan';
+                    color = '#f39c12';
+                    advice = 'Mulai atur pola makan dan tingkatkan aktivitas fisik.';
+                } else {
+                    category = 'Obesitas';
+                    color = '#e74c3c';
+                    advice = 'Konsultasikan dengan dokter untuk program penurunan berat badan yang aman.';
+                }
+            } else {
+                category = 'Usia di luar rentang';
+                color = '#95a5a6';
+                advice = 'Kalkulator ini untuk anak usia 5-18 tahun.';
+            }
+            
+            const resultDiv = document.getElementById('bmi-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <h3 style="color: ${color};">BMI: ${bmiRounded}</h3>
+                <p style="font-size: 1.2rem; margin: 1rem 0;"><strong>Kategori: ${category}</strong></p>
+                <p style="color: #666;">${advice}</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem; color: #999;">
+                    *Catatan: Hasil ini hanya perkiraan. Konsultasikan dengan dokter untuk evaluasi yang lebih akurat.
+                </p>
+            `;
+        }
+
+        // Add animation on scroll
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.info-card, .tips-list li');
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.info-card, .tips-list li');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+        });
+    </script>
+</body>
+</html>
